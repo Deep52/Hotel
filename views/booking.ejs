@@ -1,0 +1,151 @@
+<%- include('header') %>
+    <script>
+        function rate() {
+            var p = document.getElementById("r_price").value;
+            var from = document.getElementById("b_date_f").value;
+            var to = document.getElementById("b_date_t").value;
+            var last_f = from.toString().slice(-2);
+            var last_t = to.toString().slice(-2);
+            var result = parseInt(last_t) - parseInt(last_f);
+            if (result > 0) {
+                mult1 = p * result
+                document.getElementById("r_price").value = mult1
+            } else {
+                alert('Date must be enter increased from entrance date of hotel   ');
+            }
+
+
+            //alert(mult1);
+        }
+    </script>
+
+    <div class="p_wrapper col3">
+        <div id="gallery" style="height: 600px;">
+            <div id="front_top" style="border-bottom: 1px solid #D4791A;position: static;height: 60px;">
+                <div id="page_right" style="width: 480px;height: 30px;float: left;font-size: 20px;align-content: center;color:white !important">
+                    Room Available
+                </div>
+                <div id="page_left" style="text-align: right;width: 480px;height: 30px;float: left; font-size: 20px;align-content: right;color:white !important">
+                    <%  if( record[5]=='bok'){  %>
+                        Welcome =
+                        <%= record[4] %>
+                            <% } else { %>
+                                Welcome=
+                                <%= record.email %>
+                                    <% } %>
+                </div>
+            </div>
+            <% if( record[5]=='bok') {  %>
+
+                <form method="post" action="/booking_room">
+                    <table>
+                        <input type="hidden" value="<%= record[1] %>" name="c_id" id="c_id">
+
+                        <tr>
+                            <tr>
+                                <td>Customer Name</td>
+                                <td><input type="text" name="" value="<%=record[6]  %>" readonly></td>
+
+                            </tr>
+                            <td>
+                                User Email
+                            </td>
+                            <td>
+                                <input type='text' name="u_email" id="u_email" value='<%= record[4] %>' readonly="readonly">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                Room ID
+                            </td>
+                            <td>
+                                <input type='text' value='<%= record[0] %>' name="room_id" id="room_id" readonly="readonly">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                Room Type
+                            </td>
+                            <td>
+
+                                <p> <input type='text' name="r_class" id="r_class" value='<%=record[2]  %>' readonly="readonly"></p>
+
+
+
+                            </td>
+
+
+                        </tr>
+
+                        <tr>
+                            <td>Card Name</td>
+                            <td><input type="number" name="c_number" value="<%=record[7]  %>" min=" 16 " max="16 " required style="height: 32px;
+                                width: 280px;border-radius: 6px;border-color: #D4791A;"></td>
+
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Price £
+                            </td>
+                            <td>
+                                <input type='text' value='<%= record[3] %>' name="r_price" id="r_price" readonly="readonly">
+                            </td>
+
+                        </tr>
+                        <tr>
+
+                            <td>Booking date from</td>
+                            <td><input type="date" name="b_date_f" id="b_date_f" style="  margin: 5px 0px 17px 0px;  width: 280px;
+                                height: 32px;border-radius: 6px;" required></td>
+
+                        </tr>
+                        <tr>
+
+                            <td>Booking date To</td>
+                            <td><input type="date" name="b_date_t" id="b_date_t" style=" margin: 5px 0px 17px 0px;   width: 280px;
+                                height: 32px;border-radius: 6px;" onblur="rate()" required></td>
+
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="submit" value="Booking Confirm" name="b_sub" id="b_sub"></td>
+
+                        </tr>
+
+                </form>
+                </table>
+                <% } else {%>
+                    <div id="ref" style="font-size: 22px;padding: 46px 17px 5px 198px;color: white;">
+                        <%=        record.msg;    %>
+                            </br>
+                            <a href="/index" style="color: white;padding: 0px 1px 0px 355px;"> Click Here to Home Page</a>
+
+                    </div>
+                    <% } %>
+        </div>
+    </div>
+    <%- include('footer') %>
+        <style>
+            input[type="text" i] {
+                font-size: 15px;
+                margin: 11px 4px 5px 0px;
+                padding: 2px 0px;
+                height: 32px;
+                width: 280px;
+                border-radius: 6px;
+                border-color: #D4791A;
+                font-family: Georgia, "Times New Roman", Times, serif;
+            }
+            
+            #b_sub {
+                margin-bottom: 16px;
+                margin-top: 15px;
+                font-family: Georgia, "Times New Roman", Times, serif;
+                height: 39px;
+                border-radius: 8px;
+                border-color: #D4791A;
+            }
+        </style>

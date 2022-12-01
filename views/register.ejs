@@ -1,0 +1,111 @@
+<%- include('header') %>
+
+    <div class="p_wrapper col3">
+        <div id="gallery" style="height: 600px;">
+
+            <div id="p_wrapper">
+                <form action="register" method="post">
+                    <table style="width:100%;    width: 100%; padding: 5px;    font-size: 15px;">
+                        <tr>
+                            <td></td>
+                            <td>
+                                <% if(record.msg==''){ %>
+                                    <p>&nbspPlease Fill Your Information</p>
+                                    <% } else{ %>
+                                        <p>
+                                            <%= record.msg %>
+                                        </p>
+                                        <% } %>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Customer Name</td>
+                            <td><input id="c_name" class="txt" name="c_name" type="text" value="" required/></td>
+                        </tr>
+
+                        <tr>
+                            <td>Customer Email </td>
+                            <td><input id="c_email" class="" name="c_email" type="email " value="" required style="width: 277px;
+                                    height: 32px;border-radius: 6px;" /></td>
+                        </tr>
+
+
+
+                        </tr>
+                        <tr>
+                            <td>Customer Address </td>
+                            <td><input id="c_address" class="txt" name="c_address" type="text" value="" /></td>
+                        </tr>
+                        <tr>
+                            <td> Card Type </td>
+                            <td> <select name="c_cardtype" id="c_cardtype" value="" class="txt" style="" required>
+                                <option value="" id=""></option>
+                                <option value="V" >Visa Card</option>
+                                <option value="MC">Master Card</option>
+                                <option value="DC">Debit Card</option>
+                            </select>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <tr>
+                                <td> Enter Card Number </td>
+                                <td><input id="c_card_no" class="" name="c_card_no" type="number" value="" required style="width: 280px;
+                                    height: 32px; border-radius: 6px;" /></td>
+                            </tr>
+                            <tr>
+                                <td>Card expire date </td>
+                                <td><input id="ex_card_date" name="ex_card_date" class="" type="month" value="" style="    width: 280px;
+                                        height: 32px; border-radius: 6px;" required/></td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #D4791A;">
+                                <td></td>
+                                <td><button class="bt" type="submit" value="" />Submit</button>
+                                </td>
+                            </tr>
+                    </table>
+
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+    </div>
+    <%- include('footer') %>
+        <style>
+            p {
+                font-size: 20px;
+            }
+            
+            td {
+                font-size: 20px;
+            }
+            
+            input[type="text" i] {
+                font-size: 15px;
+                margin: 11px 4px 5px 0px;
+                padding: 2px 0px;
+                height: 32px;
+                width: 280px;
+                border-radius: 6px;
+                border-color: #D4791A;
+                font-family: Georgia, "Times New Roman", Times, serif;
+            }
+            
+            td,
+            th {
+                text-align: left;
+                padding: 4px;
+            }
+            
+            #b_sub {
+                margin-bottom: 36px;
+                margin-top: 15px;
+                font-family: Georgia, "Times New Roman", Times, serif;
+                height: 39px;
+                border-radius: 8px;
+                border-color: #D4791A;
+            }
+        </style>

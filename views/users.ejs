@@ -1,0 +1,77 @@
+<%- include('header') %>
+
+    <div class="p_wrapper col3">
+        <div id="gallery" style="height: 600px;">
+            <% if(record=='not'){ %>
+                <p style="font-size: 25px;color: white;">Email ID doesn't valid please enter valid Email ID</p>
+                <%  } else{ %>
+                    <div id="front_top" style="border-bottom: 1px solid #D4791A;position: static;height: 60px;">
+                        <div id="page_right" style="width: 480px;height: 30px;float: left;font-size: 20px;align-content: center;color:white !important">
+                            Room Available
+                        </div>
+                        <div id="page_left" style="text-align: right;width: 480px;height: 30px;float: left; font-size: 20px;align-content: right;color:white !important">
+                            Welcome =
+                            <%= record.email %>
+                        </div>
+                    </div>
+                    <div id="table_main">
+                        <table>
+                            <tr>
+                                <th>Hotel Room ID</th>
+                                <th>Room type</th>
+                                <th>Available or Not</th>
+                                <th>Price</th>
+                                <th>Booking</th>
+                            </tr>
+                            <% for(var i=0; i < record.length; i++) { %>
+                                <tr>
+                                    <td>
+                                        <%= record[i].r_no %>
+
+                                    </td>
+                                    <td>
+                                        <%= record[i].r_class  %>
+
+
+
+                                    </td>
+
+                                    <td>
+                                        <% pk=record[i].r_status ; z=pk.trim()%>
+                                            <% if (z=="A") { %>
+                                                <p> Available</p>
+                                                <%} else {%>
+                                                    <p> Not Available</p>
+                                                    <% } %>
+                                    </td>
+                                    <td>
+                                        £
+                                        <%= record[i].price %>
+
+                                    </td>
+                                    <% if (z=="A") { %>
+                                        <td>
+                                            <a href="/booking/<%= record[i].r_no %>,<%= record.user_id %>,<%= record[i].r_class %>,<%= record[i].price %>,<%= record.email %>,bok">Book Now</a>
+                                        </td>
+                                        <%} else {%>
+                                            <td>
+                                                <p> Booked </p>
+                                            </td>
+
+                                            <% } %>
+
+                                </tr>
+                                <% } %>
+
+
+                        </table>
+
+
+
+                    </div>
+                    <% } %>
+        </div>
+    </div>
+    <style>
+
+    </style>
